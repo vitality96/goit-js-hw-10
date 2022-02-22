@@ -17,7 +17,7 @@ const countryInfoEl = document.querySelector('.country-info');
 const onCountriesFetch = (event) => {
     const inputValue = event.target.value.trim();
     if (inputValue.length === "") {
-        return clearAll();
+        clearAll();
     } else {
         fetchCountries(inputValue).then(markupCountryInfo).catch(() => {
             Notify.failure('Oops, there is no country with that name');
@@ -36,10 +36,16 @@ const markupCountryInfo = (country) => {
         countryListEl.innerHTML = countryList(country);
     } else {
         countryInfoEl.innerHTML = countryInfo(country[0]);
+        clearListEl();
     }
 }
 
 function clearAll() {
     countryListEl.innerHTML = '';
     countryInfoEl.innerHTML = '';
+}
+
+
+function clearListEl() {
+    countryListEl.innerHTML = '';
 }
